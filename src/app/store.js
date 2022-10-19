@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import filterReducer from "../features/filter/filterSlice";
 import paginationReducer from "../features/pagination/paginationSlice";
-// import likeUnlikeReducer from "../features/likeUnlike/likeUnlikeSlice";
+import likeUnlikeReducer from "../features/likeUnlike/likeUnlikeSlice";
 import relatedVideosReducer from "../features/relatedVideos/relatedVideosSlice";
 import tagsReducer from "../features/tags/tagsSlice";
 import videoReducer from "../features/video/videoSlice";
@@ -15,6 +15,6 @@ export const store = configureStore({
     relatedVideos: relatedVideosReducer,
     filter: filterReducer,
     pagination: paginationReducer,
-    // likeUnlike: likeUnlikeReducer,
+    likeUnlike: likeUnlikeReducer,
   },
 });

@@ -1,7 +1,11 @@
 import axios from "../../utils/axios";
 
-export const updateLikeUnlike = async ({reaction, id}) => {
+export const updateLikeUnlike = async (reaction, id) => {
+  console.log(reaction);
+  console.log(id);
+  // const { data } = await axios.get(`/videos/${id}`);
   const { data } = await axios.get(`/videos/${id}`);
+
   if (data) {
     let updateReaction =
       reaction === "like"
@@ -13,9 +17,14 @@ export const updateLikeUnlike = async ({reaction, id}) => {
           };
 
     const response = await axios.patch(`/videos/${id}`, updateReaction);
+    // console.log(response);
     return response.data;
   }
 };
 
+// export const updateLikeUnlike = async (reaction, id) => {
+//   const response = await axios.get(`/videos/${id}`);
+//   console.log(response)
+//   return response.data;
 
-
+// };

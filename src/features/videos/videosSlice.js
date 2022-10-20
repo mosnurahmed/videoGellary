@@ -13,8 +13,8 @@ const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 // async thunk
 export const fetchVideos = createAsyncThunk(
     "videos/fetchVideos",
-    async ({ tags, search,page}) => {
-        const videos = await getVideos(tags, search, page);
+    async ({ tags, search,page, authors}) => {
+        const videos = await getVideos(tags, search, page, authors);
         return videos;
     }
 );

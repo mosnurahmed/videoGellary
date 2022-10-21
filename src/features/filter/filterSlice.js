@@ -2,7 +2,7 @@ const { createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
   tags: [],
-  search: "",
+  search: " ",
   authors: null,
 };
 
@@ -28,8 +28,9 @@ const filterSlice = createSlice({
     },
     reset: (state, action) => {
       if (action.payload === "remove") {
+
         state.tags = [];
-        state.search = "";
+        state.search = " ";
         state.authors = null;
       }
     },

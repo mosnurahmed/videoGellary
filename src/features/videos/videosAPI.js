@@ -1,10 +1,10 @@
 import axios from "../../utils/axios";
 // http://jsonplaceholder.typicode.com/posts?_start=0&_end=10 returns 10 results (rank 0 to 9)
 
-export const getVideos = async (tags, search, page, authors, pageNumber) => {
+export const getVideos = async (tags, search, page, authors) => {
   let queryString = "";
 
-  console.log(`api :${authors}`);
+  
 
   if (authors !== null) {
     let author = authors.split(" ");
@@ -19,6 +19,7 @@ export const getVideos = async (tags, search, page, authors, pageNumber) => {
   }
 
   const response = await axios.get(`/videos/?${queryString}`);
+  
 
   return response.data;
 };

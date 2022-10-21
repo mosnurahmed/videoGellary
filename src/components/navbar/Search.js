@@ -7,6 +7,7 @@ import { searched } from "../../features/filter/filterSlice";
 export default function Search() {
     const dispatch = useDispatch();
     const { search } = useSelector((state) => state.filter);
+    
     const [input, setInput] = useState(search);
 
     const match = useMatch("/");

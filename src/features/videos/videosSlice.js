@@ -1,21 +1,22 @@
-import { setLimit } from "../pagination/paginationSlice";
 import { getVideos } from "./videosAPI";
 
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 const initialState = {
   videos: [],
-  videoPerPage: 10,
   isLoading: false,
   isError: false,
   error: "",
 };
 
 // async thunk
-export const fetchVideos = createAsyncThunk("videos/fetchVideos", async ({ tags, search, page, authors, pageNumber }) => {
-  const videos = await getVideos(tags, search, page, authors, pageNumber);
-  return videos;
-});
+export const fetchVideos = createAsyncThunk(
+  "videos/fetchVideos",
+  async ({ tags, search, page, authors, pageNumber }) => {
+    const videos = await getVideos(tags, search, page, authors, pageNumber);
+    return videos;
+  }
+);
 
 const videoSlice = createSlice({
   name: "videos",

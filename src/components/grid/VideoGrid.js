@@ -4,23 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchVideos } from "../../features/videos/videosSlice";
 import Loading from "../ui/Loading";
 import VideoGridItem from "./VideoGridItem";
+import Pagination from "../ui/Pagination";
 
 export default function VideGrid() {
   const dispatch = useDispatch();
-  const { currentPage } = useSelector((state) => state.pagination);
-  // console.log(pageNumber);
-  // const [currentPage, setCurrentPage] = useState(pageNumber);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [perPage, setPerpage] = useState(5);
 
-  const { videos, isLoading, isError, error, videoPerPage } = useSelector((state) => state.videos);
-
+  const { videos, isLoading, isError, error } = useSelector((state) => state.videos);
   const { tags, search, authors } = useSelector((state) => state.filter);
 
-  const indexOfLastVideos = currentPage * videoPerPage;
-  const indexOfFirstVideos = indexOfLastVideos - videoPerPage;
-  // console.log(`current videos object : ${videos}`)
-  const currentVideos = videos.slice(indexOfFirstVideos, indexOfLastVideos);
-  console.log(`fist index: ${indexOfFirstVideos}  last index : ${indexOfLastVideos}`);
-  // console.log(`current videos object : ${currentVideos}`)
+  console.log(videos);
 
   useEffect(() => {
     dispatch(fetchVideos({ tags, search, authors }));
@@ -37,13 +31,17 @@ export default function VideGrid() {
   }
 
   if (!isError && !isLoading && videos?.length > 0) {
-    content = currentVideos.map((video) => <VideoGridItem key={video.id} video={video} />);
+    content = videos
+      .slice((currentPage - 1) * perPage, currentPage * perPage)
+      .map((video) => <VideoGridItem key={video.id} video={video} />);
   }
+  let totalPage = Math.ceil(videos.length / perPage);
 
   return (
     <section className="pt-12">
       <section className="pt-12">
         <div className="grid grid-cols-12 gap-4 max-w-7xl mx-auto px-5 lg:px-0 min-h-[300px]">{content}</div>
+        <Pagination currentPage={currentPage} totalPage={totalPage} setCurrentPage={setCurrentPage} />
       </section>
     </section>
   );

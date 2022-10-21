@@ -11,7 +11,7 @@ function Reset() {
   };
 
   return (
-    <div className="border border-slate-800 text-center ">
+    <div className="border border-slate-800 p-3 ...text-center bg-emerald-900 text-white rounded-full ... ">
       <p onClick={() => resetHandler("remove")}>Reset</p>
     </div>
   );

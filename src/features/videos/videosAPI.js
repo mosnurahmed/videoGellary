@@ -4,8 +4,6 @@ import axios from "../../utils/axios";
 export const getVideos = async (tags, search, page, authors) => {
   let queryString = "";
 
-  
-
   if (authors !== null) {
     let author = authors.split(" ");
     queryString += author.map((author) => `author_like=${author}`).join("&");
@@ -19,7 +17,6 @@ export const getVideos = async (tags, search, page, authors) => {
   }
 
   const response = await axios.get(`/videos/?${queryString}`);
-  
 
   return response.data;
 };

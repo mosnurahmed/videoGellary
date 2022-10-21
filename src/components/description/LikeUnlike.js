@@ -12,10 +12,8 @@ export default function LikeUnlike({ id, likes, unlikes }) {
   }, [id, dispatch]);
 
   const { video } = useSelector((state) => state.likeUnlike);
-  console.log(`videoLIke:${video.likes}`);
 
   const likeHandler = (reaction, id) => {
-    
     dispatch(countLikeUnlike({ reaction, id }));
   };
   const unpLikeHandler = (reaction, id) => {

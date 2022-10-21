@@ -9,6 +9,7 @@ export default function Search() {
     const { search } = useSelector((state) => state.filter);
     
     const [input, setInput] = useState(search);
+    console.log(input)
 
     const match = useMatch("/");
     const navigate = useNavigate();

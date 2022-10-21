@@ -28,6 +28,7 @@ const videoSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchVideos.fulfilled, (state, action) => {
+        
         state.isLoading = false;
         state.videos = action.payload;
       })

@@ -14,7 +14,6 @@ export default function VideGrid() {
   const { videos, isLoading, isError, error } = useSelector((state) => state.videos);
   const { tags, search, authors } = useSelector((state) => state.filter);
 
-  console.log(videos);
 
   useEffect(() => {
     dispatch(fetchVideos({ tags, search, authors }));
